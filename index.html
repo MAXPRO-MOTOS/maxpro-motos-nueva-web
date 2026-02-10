@@ -1,195 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>MAXPRO Motos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxpro Motos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('imagen1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .overlay {
+            background-color: rgba(0,0,0,0.6);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: rgba(0,0,0,0.7);
+        }
+        header h1 { margin: 0; color: #ff5722; }
+        header .cart { display: flex; align-items: center; gap: 8px; }
+        header .cart img { display: block; width: 40px; }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url("images/fondo.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      color: #fff;
-    }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; margin-bottom: 30px; }
+        .products-grid .product-card {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        .products-grid .product-card img { width: 100%; border-radius: 10px; }
+        .products-grid .product-card button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #ff5722;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .products-grid .product-card button:hover { background-color: #ff784e; }
 
-    .overlay {
-      background: rgba(0,0,0,0.6);
-      min-height: 100vh;
-      padding: 20px;
-    }
+        section h2 { text-align: center; color: #ff5722; margin: 40px 0 20px 0; font-size: 1.8em; }
 
-    header {
-      text-align: center;
-      padding: 20px 10px;
-    }
+        footer {
+            background-color: rgba(0,0,0,0.7);
+            padding: 15px 30px;
+            text-align: center;
+            color: white;
+        }
 
-    /* ===== Carrito ===== */
-    .cart {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      background: #ffcc00;
-      color: #000;
-      padding: 10px 15px;
-      border-radius: 20px;
-      font-weight: bold;
-      z-index: 1000;
-    }
-
-    /* ===== Productos individuales ===== */
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .producto {
-      background: #fff;
-      color: #000;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-    }
-
-    .producto img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .btn-producto {
-      margin-top: 10px;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      background: #000;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .btn-producto:hover {
-      background: #444;
-    }
-
-    /* ===== Collage ===== */
-    .collage {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-top: 40px;
-    }
-
-    .collage-item {
-      position: relative;
-      cursor: pointer;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 3px solid transparent;
-    }
-
-    .collage-item img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-
-    .collage-item.selected {
-      border-color: #ffcc00;
-    }
-
-    .label {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      text-align: center;
-      padding: 5px;
-      font-size: 14px;
-    }
-  </style>
+        @media (max-width:600px) {
+            header { flex-direction: column; text-align: center; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="overlay">
+        <header>
+            <h1>Maxpro Motos</h1>
+            <div class="cart">
+                <img src="carrito.png" alt="Carrito">
+                <span>$0</span>
+            </div>
+        </header>
 
-<div class="cart">
-  🛒 Carrito: <span id="cartCount">0</span>
-</div>
+        <main>
+            <!-- Productos individuales -->
+            <section class="products">
+                <h2>Productos</h2>
+                <div class="products-grid">
+                    <div class="product-card"><img src="amortiguadores1.jpg" alt="Amortiguador 1"><h3>Amortiguador 1</h3><button onclick="agregarCarrito('Amortiguador 1')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores2.jpg" alt="Amortiguador 2"><h3>Amortiguador 2</h3><button onclick="agregarCarrito('Amortiguador 2')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores3.jpg" alt="Amortiguador 3"><h3>Amortiguador 3</h3><button onclick="agregarCarrito('Amortiguador 3')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores4.jpg" alt="Amortiguador 4"><h3>Amortiguador 4</h3><button onclick="agregarCarrito('Amortiguador 4')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores5.jpg" alt="Amortiguador 5"><h3>Amortiguador 5</h3><button onclick="agregarCarrito('Amortiguador 5')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores6.jpg" alt="Amortiguador 6"><h3>Amortiguador 6</h3><button onclick="agregarCarrito('Amortiguador 6')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores7.jpg" alt="Amortiguador 7"><h3>Amortiguador 7</h3><button onclick="agregarCarrito('Amortiguador 7')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores8.jpg" alt="Amortiguador 8"><h3>Amortiguador 8</h3><button onclick="agregarCarrito('Amortiguador 8')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores9.jpg" alt="Amortiguador 9"><h3>Amortiguador 9</h3><button onclick="agregarCarrito('Amortiguador 9')">Comprar</button></div>
+                    <div class="product-card"><img src="amortiguadores10.jpg" alt="Amortiguador 10"><h3>Amortiguador 10</h3><button onclick="agregarCarrito('Amortiguador 10')">Comprar</button></div>
+                </div>
+            </section>
 
-<div class="overlay">
+            <!-- Productos Destacados -->
+            <section class="products-destacados">
+                <h2>Productos Destacados</h2>
+                <div class="products-grid">
+                    <div class="product-card"><img src="" alt="Producto destacado 1"><h3>Producto Destacado 1</h3><button>Comprar</button></div>
+                    <div class="product-card"><img src="" alt="Producto destacado 2"><h3>Producto Destacado 2</h3><button>Comprar</button></div>
+                </div>
+            </section>
 
-  <header>
-    <h1>MAXPRO MOTOS</h1>
-    <p>Productos destacados</p>
-  </header>
+            <!-- Productos Nuevos -->
+            <section class="productos-nuevos">
+                <h2>Productos Nuevos</h2>
+                <div class="products-grid">
+                    <div class="product-card"><img src="" alt="Producto nuevo 1"><h3>Producto Nuevo 1</h3><button>Comprar</button></div>
+                    <div class="product-card"><img src="" alt="Producto nuevo 2"><h3>Producto Nuevo 2</h3><button>Comprar</button></div>
+                </div>
+            </section>
 
-  <!-- ===== Productos individuales ===== -->
-  <section class="productos">
+            <!-- Ofertas -->
+            <section class="productos-ofertas">
+                <h2>Ofertas</h2>
+                <div class="products-grid">
+                    <div class="product-card"><img src="" alt="Oferta 1"><h3>Oferta 1</h3><button>Comprar</button></div>
+                    <div class="product-card"><img src="" alt="Oferta 2"><h3>Oferta 2</h3><button>Comprar</button></div>
+                </div>
+            </section>
+        </main>
 
-    <div class="producto">
-      <img src="images/amortiguadores1.jpg" alt="Amortiguador delantero">
-      <h3>Amortiguador delantero</h3>
-      <button class="btn-producto" onclick="addToCart()">Agregar</button>
+        <footer>
+            Calle 7p #45-05 · 2026 Maxpro Motos · maxpromotos.company@gmail.com
+        </footer>
     </div>
 
-    <div class="producto">
-      <img src="images/amortiguadores2.jpg" alt="Amortiguador trasero">
-      <h3>Amortiguador trasero</h3>
-      <button class="btn-producto" onclick="addToCart()">Agregar</button>
-    </div>
+    <script>
+        let carrito = [];
 
-    <div class="producto">
-      <img src="images/filtro-aceite.jpg" alt="Filtro de aceite">
-      <h3>Filtro de aceite</h3>
-      <button class="btn-producto" onclick="addToCart()">Agregar</button>
-    </div>
-
-  </section>
-
-  <!-- ===== Collage seleccionable ===== -->
-  <h2 style="text-align:center; margin-top:40px;">Selecciona desde el collage</h2>
-
-  <section class="collage">
-
-    <div class="collage-item" onclick="selectItem(this)">
-      <img src="images/amortiguadores1.jpg">
-      <div class="label">Amortiguador 1</div>
-    </div>
-
-    <div class="collage-item" onclick="selectItem(this)">
-      <img src="images/amortiguadores2.jpg">
-      <div class="label">Amortiguador 2</div>
-    </div>
-
-    <div class="collage-item" onclick="selectItem(this)">
-      <img src="images/filtro-aceite.jpg">
-      <div class="label">Filtro aceite</div>
-    </div>
-
-  </section>
-
-</div>
-
-<script>
-  let cart = 0;
-
-  function addToCart() {
-    cart++;
-    document.getElementById("cartCount").innerText = cart;
-  }
-
-  function selectItem(element) {
-    element.classList.toggle("selected");
-    addToCart();
-  }
-</script>
-
+        function agregarCarrito(nombreProducto) {
+            carrito.push(nombreProducto);
+            alert(nombreProducto + " agregado al carrito!");
+            document.querySelector('.cart span').textContent = "$" + carrito.length;
+            console.log(carrito);
+        }
+    </script>
 </body>
-</html
+</html>
