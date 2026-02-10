@@ -14,17 +14,18 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-    }
-
-    .overlay {
-      background: rgba(0,0,0,0.65);
-      min-height: 100vh;
-      padding: 20px;
       color: #fff;
     }
 
-    h1, h2 {
+    .overlay {
+      background: rgba(0,0,0,0.6);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
       text-align: center;
+      padding: 20px 10px;
     }
 
     /* ===== Carrito ===== */
@@ -41,14 +42,14 @@
     }
 
     /* ===== Productos individuales ===== */
-    .products {
+    .productos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       margin-top: 30px;
     }
 
-    .card {
+    .producto {
       background: #fff;
       color: #000;
       border-radius: 10px;
@@ -56,14 +57,14 @@
       text-align: center;
     }
 
-    .card img {
+    .producto img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 8px;
     }
 
-    button {
+    .btn-producto {
       margin-top: 10px;
       padding: 8px 12px;
       border: none;
@@ -73,7 +74,7 @@
       cursor: pointer;
     }
 
-    button:hover {
+    .btn-producto:hover {
       background: #444;
     }
 
@@ -124,32 +125,39 @@
 
 <div class="overlay">
 
-  <h1>MAXPRO MOTOS</h1>
-  <h2>Productos individuales</h2>
+  <header>
+    <h1>MAXPRO MOTOS</h1>
+    <p>Productos destacados</p>
+  </header>
 
-  <div class="products">
-    <div class="card">
+  <!-- ===== Productos individuales ===== -->
+  <section class="productos">
+
+    <div class="producto">
       <img src="images/amortiguadores1.jpg" alt="Amortiguador delantero">
       <h3>Amortiguador delantero</h3>
-      <button onclick="addToCart()">Agregar</button>
+      <button class="btn-producto" onclick="addToCart()">Agregar</button>
     </div>
 
-    <div class="card">
+    <div class="producto">
       <img src="images/amortiguadores2.jpg" alt="Amortiguador trasero">
       <h3>Amortiguador trasero</h3>
-      <button onclick="addToCart()">Agregar</button>
+      <button class="btn-producto" onclick="addToCart()">Agregar</button>
     </div>
 
-    <div class="card">
+    <div class="producto">
       <img src="images/filtro-aceite.jpg" alt="Filtro de aceite">
       <h3>Filtro de aceite</h3>
-      <button onclick="addToCart()">Agregar</button>
+      <button class="btn-producto" onclick="addToCart()">Agregar</button>
     </div>
-  </div>
 
-  <h2>Selecciona desde el collage</h2>
+  </section>
 
-  <div class="collage">
+  <!-- ===== Collage seleccionable ===== -->
+  <h2 style="text-align:center; margin-top:40px;">Selecciona desde el collage</h2>
+
+  <section class="collage">
+
     <div class="collage-item" onclick="selectItem(this)">
       <img src="images/amortiguadores1.jpg">
       <div class="label">Amortiguador 1</div>
@@ -164,7 +172,8 @@
       <img src="images/filtro-aceite.jpg">
       <div class="label">Filtro aceite</div>
     </div>
-  </div>
+
+  </section>
 
 </div>
 
@@ -183,4 +192,4 @@
 </script>
 
 </body>
-</html>
+</html
