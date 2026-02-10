@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maxpro Motos</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('fondo.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+    }
+    .overlay {
+        background-color: rgba(0,0,0,0.6);
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: rgba(0,0,0,0.7);
+    }
+    header h1 { margin: 0; color: #ff5722; }
+    header .cart { display: flex; align-items: center; gap: 8px; }
+    header .cart img { display: block; width: 40px; }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    .products-grid .product-card {
+        background-color: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.2s;
+        cursor: pointer;
+    }
+    .products-grid .product-card:hover { transform: scale(1.05); }
+    .products-grid .product-card img { width: 100%; border-radius: 10px; }
+    .products-grid .product-card button {
+        margin-top: 8px;
+        padding: 8px 12px;
+        background-color: #ff5722;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+    }
+    .products-grid .product-card button:hover { background-color: #ff784e; }
+
+    section h2 { text-align: center; color: #ff5722; margin: 30px 0 15px 0; font-size: 1.7em; }
+
+    footer {
+        background-color: rgba(0,0,0,0.7);
+        padding: 15px 30px;
+        text-align: center;
+        color: white;
+    }
+
+    @media (max-width:600px) {
+        header { flex-direction: column; text-align: center; }
+        .products-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+<div class="overlay">
+    <header>
+        <h1>Maxpro Motos</h1>
+        <div class="cart">
+            <img src="carrito.png" alt="Carrito">
+            <span>$0</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección productos tipo collage -->
+        <section class="products">
+            <h2>Productos</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="amortiguadores1.jpg" alt="Amortiguador 1">
+                    <h3>Amortiguador 1</h3>
+                    <button onclick="agregarCarrito('Amortiguador 1')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores2.jpg" alt="Amortiguador 2">
+                    <h3>Amortiguador 2</h3>
+                    <button onclick="agregarCarrito('Amortiguador 2')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores3.jpg" alt="Amortiguador 3">
+                    <h3>Amortiguador 3</h3>
+                    <button onclick="agregarCarrito('Amortiguador 3')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores4.jpg" alt="Amortiguador 4">
+                    <h3>Amortiguador 4</h3>
+                    <button onclick="agregarCarrito('Amortiguador 4')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores5.jpg" alt="Amortiguador 5">
+                    <h3>Amortiguador 5</h3>
+                    <button onclick="agregarCarrito('Amortiguador 5')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores6.jpg" alt="Amortiguador 6">
+                    <h3>Amortiguador 6</h3>
+                    <button onclick="agregarCarrito('Amortiguador 6')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores7.jpg" alt="Amortiguador 7">
+                    <h3>Amortiguador 7</h3>
+                    <button onclick="agregarCarrito('Amortiguador 7')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores8.jpg" alt="Amortiguador 8">
+                    <h3>Amortiguador 8</h3>
+                    <button onclick="agregarCarrito('Amortiguador 8')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores9.jpg" alt="Amortiguador 9">
+                    <h3>Amortiguador 9</h3>
+                    <button onclick="agregarCarrito('Amortiguador 9')">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="amortiguadores10.jpg" alt="Amortiguador 10">
+                    <h3>Amortiguador 10</h3>
+                    <button onclick="agregarCarrito('Amortiguador 10')">Comprar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Productos Destacados -->
+        <section class="products-destacados">
+            <h2>Productos Destacados</h2>
+            <div class="products-grid">
+                <div class="product-card"><img src="" alt="Producto destacado 1"><h3>Producto Destacado 1</h3><button>Comprar</button></div>
+                <div class="product-card"><img src="" alt="Producto destacado 2"><h3>Producto Destacado 2</h3><button>Comprar</button></div>
+            </div>
+        </section>
+
+        <!-- Productos Nuevos -->
+        <section class="productos-nuevos">
+            <h2>Productos Nuevos</h2>
+            <div class="products-grid">
+                <div class="product-card"><img src="" alt="Producto nuevo 1"><h3>Producto Nuevo 1</h3><button>Comprar</button></div>
+                <div class="product-card"><img src="" alt="Producto nuevo 2"><h3>Producto Nuevo 2</h3><button>Comprar</button></div>
+            </div>
+        </section>
+
+        <!-- Ofertas -->
+        <section class="productos-ofertas">
+            <h2>Ofertas</h2>
+            <div class="products-grid">
+                <div class="product-card"><img src="" alt="Oferta 1"><h3>Oferta 1</h3><button>Comprar</button></div>
+                <div class="product-card"><img src="" alt="Oferta 2"><h3>Oferta 2</h3><button>Comprar</button></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Calle 7p #45-05 · 2026 Maxpro Motos · maxpromotos.company@gmail.com
+    </footer>
+</div>
+
+<script>
+    let carrito = [];
+
+    function agregarCarrito(nombreProducto) {
+        carrito.push(nombreProducto);
+        alert(nombreProducto + " agregado al carrito!");
+        document.querySelector('.cart span').textContent = "$" + carrito.length;
+        console.log(carrito);
+    }
+</script>
+</body>
+</html>
